@@ -1,0 +1,43 @@
+body {
+    background: #17212b;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #2ea6ff;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+p{
+    padding: 12px 20px;
+    font-size: 50px;
+    color: #17212b;
+}
+
+.my-div {
+    display: block;
+    width: 65%;
+    height: 35%;
+    background-color: #fbfbfc;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 18px;
+}
