@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'lalezar'; 
+    src: url('Digi Lalezar Plus Circle.otf') format('opentype');
+}
+
 body {
     background: #17212b;
     color: white;
@@ -7,15 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-}
-
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #2ea6ff;
-    color: white;
-    cursor: pointer;
+    font-family: lalezar;
 }
 
 button:disabled {
@@ -23,11 +20,6 @@ button:disabled {
     cursor: not-allowed;
 }
 
-p{
-    padding: 12px 20px;
-    font-size: 50px;
-    color: #17212b;
-}
 
 .my-div {
     display: block;
@@ -40,4 +32,57 @@ p{
     margin: 20px auto;
     text-align: center;
     font-size: 18px;
+    position: relative;
+}
+
+.view-count {
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* کلید اصلی */
+    padding: 12px 20px;
+    font-size: 20px;
+    color: #17212b;
+    margin: 0; /* حذف margin پیش‌فرض */
+    width: 80%; /* یا width دلخواه */
+}
+
+.note {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* کلید اصلی */
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #17212b;
+    margin: 0; /* حذف margin پیش‌فرض */
+    width: 80%; /* یا width دلخواه */
+}
+
+
+.open-post{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #47a521;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: lalezar;
+}
+
+.my-image {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; /* یا هر مقدار */
+    height: auto; /* نسبت ابعاد حفظ میشه */
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto; /* وسط‌چین */
 }
