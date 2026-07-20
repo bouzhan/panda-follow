@@ -4,8 +4,19 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
+
+let links = [];
+let links_id = 0;
+
+fetch("links.json")
+  .then((response) => response.json())
+  .then(json => {
+    links = json;
+  })
+  .catch((error) => console.error(error));
+
 document.getElementById("btn").onclick = () => {
-  tg.openTelegramLink("https://t.me/persian_drive/374");
+  tg.openTelegramLink(links[links_id]);
 
   document.getElementById("btn").disabled = true;
   time = 10;
@@ -19,16 +30,19 @@ document.addEventListener("visibilitychange", async () => {
 });
 
 let timer;
-let time = 10;
+let time;
 
 function startTimer() {
   timer = setInterval(() => {
-    document.getElementById("para").innerHTML = time;
     time--;
 
     if (time < 0) {
       clearInterval(timer);
       document.getElementById("btn").disabled = false;
+      links_id++;
     }
   }, 1000);
 }
+
+
+
