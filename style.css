@@ -20,11 +20,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
-
 .my-div {
     display: block;
-    width: 65%;
-    height: 35%;
+    width: 350px;
+    height: 325px;
     background-color: #fbfbfc;
     color: white;
     padding: 20px;
