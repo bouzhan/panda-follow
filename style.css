@@ -1,194 +1,273 @@
 @font-face {
-    font-family: 'lalezar'; 
-    src: url('Digi Lalezar Plus Circle.otf') format('opentype');
+  font-family: "lalezar";
+  src: url("Digi Lalezar Plus Circle.otf") format("opentype");
 }
 
 @font-face {
-    font-family: 'sahel'; 
-    src: url('Sahel-Bold.ttf') format('opentype');
+  font-family: "sahel";
+  src: url("Sahel-Bold.ttf") format("opentype");
 }
 
 body {
-    background: #17212b;
-    color: white;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: lalezar;
+  background: #17212b;
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: lalezar;
 }
 
 button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
+p {
+  color: #17212b;
+}
 
 .vfv {
-    display: block;
-    width: 75%;
-    height: 35%;
-    background-color: #fbfbfc;
-    color: white;
-    padding: 20px;
-    border-radius: 30px;
-    margin: 20px auto;
-    text-align: center;
-    font-size: 18px;
-    position: relative;
+  display: none;
+  width: 75%;
+  height: 35%;
+  background-color: #fbfbfc;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
 }
 
-.vfv .timer-counter{
-    position: absolute;
-    top: 44.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #17212b;
-    font-size: 50px;
+.vfv .timer-counter {
+  position: absolute;
+  top: 44.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #17212b;
+  font-size: 50px;
 }
 
-.view-count {
-    position: absolute;
-    top: 37%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* کلید اصلی */
-    padding: 12px 20px;
-    font-size: 20px;
-    color: #17212b;
-    margin: 0; /* حذف margin پیش‌فرض */
-    width: 80%; /* یا width دلخواه */
+.vfv .view-count {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* کلید اصلی */
+  padding: 12px 20px;
+  font-size: 20px;
+  color: #17212b;
+  margin: 0; /* حذف margin پیش‌فرض */
+  width: 80%; /* یا width دلخواه */
 }
 
-.note {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* کلید اصلی */
-    padding: 12px 20px;
-    font-size: 14px;
-    color: #17212b;
-    margin: 0; /* حذف margin پیش‌فرض */
-    width: 80%; /* یا width دلخواه */
+.vfv .note {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* کلید اصلی */
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #17212b;
+  margin: 0; /* حذف margin پیش‌فرض */
+  width: 80%; /* یا width دلخواه */
 }
 
-
-.open-post{
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #47a521;
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    font-family: lalezar;
+.vfv .open-post {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #47a521;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: lalezar;
 }
 
 .main-menu {
-    display: none;
-    width: 75%;
-    height: 360px;
-    background-color: #fbfbfc;
-    color: white;
-    padding: 20px;
-    border-radius: 30px;
-    margin: 20px auto;
-    text-align: center;
-    font-size: 18px;
-    position: relative;
+  display: none;
+  width: 75%;
+  height: 360px;
+  background-color: #fbfbfc;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
 }
 
 .main-menu h2 {
-    color: black;
-    position: absolute;
-    top : 18%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
+  color: black;
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
 }
 
 .main-menu .vfv-button {
-    position: absolute;
-    top : 32%;
-    left : 45px;
-    right: 45px;
-    padding: 9px 9px;
-    border: none;
-    border-radius: 10px;
-    background: #47a521;
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    font-family: lalezar;
+  position: absolute;
+  top: 32%;
+  left: 45px;
+  right: 45px;
+  padding: 9px 9px;
+  border: none;
+  border-radius: 10px;
+  background: #47a521;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: lalezar;
 }
 
 .main-menu .jfj-button {
-    position: absolute;
-    top : 47%;
-    left : 45px;
-    right: 45px;
-    padding: 9px 9px;
-    padding: 9px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #456df3;
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    font-family: lalezar;
+  position: absolute;
+  top: 47%;
+  left: 45px;
+  right: 45px;
+  padding: 9px 9px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #456df3;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: lalezar;
 }
 
-.main-menu .vfv-description{
-    position: absolute;
-    top: 60%;
-    color: #17212b;
-    font-family: sahel;
-    word-spacing: -2px;
-    left : 48px;
-    right: 48px;
-    direction: rtl;
-    text-align: justify;
+.main-menu .vfv-description {
+  position: absolute;
+  top: 60%;
+  color: #17212b;
+  font-family: sahel;
+  word-spacing: -2px;
+  left: 48px;
+  right: 48px;
+  direction: rtl;
+  text-align: justify;
 }
 
-.main-menu .jfj-description{
-    position: absolute;
-    top: 76%;
-    color: #17212b;
-    font-family: sahel;
-    word-spacing: -2px;
-    left : 48px;
-    right: 48px;
-    direction: rtl;
-    text-align: justify;
+.main-menu .jfj-description {
+  position: absolute;
+  top: 76%;
+  color: #17212b;
+  font-family: sahel;
+  word-spacing: -2px;
+  left: 48px;
+  right: 48px;
+  direction: rtl;
+  text-align: justify;
 }
 
-.main-menu .panda_follow_watermark{
-    position: absolute;
-    top: 88%;
-    color: #17212b;
-    font-family: sahel;
-    word-spacing: -2px;
-    left : 48px;
-    right: 48px;
-    font-size: 15px;
+.main-menu .panda_follow_watermark {
+  position: absolute;
+  top: 88%;
+  color: #17212b;
+  font-family: sahel;
+  word-spacing: -2px;
+  left: 48px;
+  right: 48px;
+  font-size: 15px;
 }
 
+.icon {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px; /* یا هر مقدار */
+  height: auto; /* نسبت ابعاد حفظ میشه */
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto; /* وسط‌چین */
+}
 
+.vfv-req {
+  display: block;
+  width: 75%;
+  height: 62%;
+  background-color: #fbfbfc;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+}
 
-.my-image {
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140px; /* یا هر مقدار */
-    height: auto; /* نسبت ابعاد حفظ میشه */
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto; /* وسط‌چین */
+.vfv-req .title{
+  position: relative;
+  margin-top: 65px;
+  margin-bottom: 0;
+  left :10px;
+  right:10px;
+  font-size: 30px;
+}
 
+.vfv-req .description{
+  position: relative;
+  margin-top: 0;
+  left: 10px;
+  right: 10px;
+  font-size: 20px;
+}
+
+.vfv-req .rules{
+  position: relative;
+  width: 90%;
+  direction: rtl;
+  text-align: justify;
+}
+
+.vfv-req .logs{
+  position: relative;
+  margin-top: 45px;
+  left: 10px;
+  right: 10px;
+  color: red;
+  font-family: sahel;
+  font-size: 15px;
+}
+
+.vfv-req .link-input {
+  position: absolute;
+  top: 73%;
+  left: 10px;
+  right : 10px;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #333;
+  background: #f8f9fa;
+  border: 2px solid #acacac;
+  border-radius: 15px;
+  outline: none;
+  transition: all 0.4s ease;
+  text-align: center;
+  font-family: sahel;
+}
+
+.vfv-req .sumbit {
+  position: absolute;
+  top: 85%;
+  left : 10px;
+  right: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #47a521;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: lalezar;
 }
