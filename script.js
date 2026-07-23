@@ -1,7 +1,4 @@
-const { use } = require("react");
-
 const tg = window.Telegram.WebApp;
-
 
 tg.ready();
 tg.expand();
