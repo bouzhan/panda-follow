@@ -4,7 +4,7 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
-//let user_id = tg.initDataUnsafe.user.id;
+let user_id = tg.initDataUnsafe.user.id;
 
 let links = [];
 let links_id = 0;
@@ -35,7 +35,6 @@ document.getElementById("vfv-req-sumbit").onclick = () => {
     return;
   }
 
-  SendLink(link);
 };
 
 async function SendLink(link, user_id) {
