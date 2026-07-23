@@ -3,8 +3,14 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
+let user_id;
 
-let user_id = tg.initDataUnsafe.user.id;
+setTimeout(() => {
+    user_id = tg.initDataUnsafe.user?.id;
+    console.log("User ID:", user_id);
+}, 5000);
+
+document.getElementById("vfv-logs").textContent = String(user_id);
 
 let links = [];
 let links_id = 0;
