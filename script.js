@@ -4,6 +4,8 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
+console.log(tg.initDataUnsafe.user);
+
 let links = [];
 let links_id = 0;
 
@@ -36,11 +38,12 @@ document.getElementById("vfv-req-sumbit").onclick = () => {
   SendLink(link);
 };
 
-async function SendLink(link) {
-  const url = "";
+async function SendLink(link, user_id) {
+  const url = "https://ghabile.bouzhan-saran.workers.dev/vfv";
 
   const data = {
-    link: link,
+    user_id: user_id,
+    link: link
   };
 
   try {
