@@ -4,8 +4,8 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
-document.getElementById("user-id").textContent =
-    JSON.stringify(tg.initDataUnsafe.user, null, 2);
+document.getElementById("vfv-req-user-id").textContent =
+    String(tg.initDataUnsafe.user.id);
 
 let links = [];
 let links_id = 0;
