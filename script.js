@@ -5,7 +5,7 @@ tg.ready();
 tg.expand();
 
 document.getElementById("user-id").textContent =
-    tg.initDataUnsafe.user.id;
+    JSON.stringify(tg.initDataUnsafe.user, null, 2);
 
 let links = [];
 let links_id = 0;
