@@ -206,12 +206,13 @@ p {
   position: relative;
 }
 
-.vfv-req .user-id{
+.user-id{
   position: absolute;
-  top: 1%;
+  top: 10%;
   left: 15%;
   transform: translate(-50%, -50%);
   font-size: 1rem;
+  color: #ffffff;
 }
 
 .vfv-req .title{
