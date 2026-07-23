@@ -4,8 +4,8 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
-document.getElementById("vfv-req-user-id").textContent =
-    String(tg.initDataUnsafe.user.id);
+let user_id = tg.initDataUnsafe.user.id;
+document.getElementById("vfv-req-user-id").textContent = user_id;
 
 let links = [];
 let links_id = 0;
