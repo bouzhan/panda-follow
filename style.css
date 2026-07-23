@@ -29,67 +29,19 @@ p {
   color: #17212b;
 }
 
-.vfv {
-  display: none;
-  width: 75%;
-  height: 35%;
-  background-color: #fbfbfc;
-  color: white;
-  padding: 20px;
-  border-radius: 30px;
-  margin: 20px auto;
-  text-align: center;
-  font-size: 18px;
-  position: relative;
-}
-
-.vfv .timer-counter {
+.icon {
   position: absolute;
-  top: 44.5%;
+  top: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #17212b;
-  font-size: 3rem;
-}
-
-.vfv .view-count {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* کلید اصلی */
-  padding: 12px 20px;
-  font-size: 1.3rem;
-  color: #17212b;
-  margin: 0; /* حذف margin پیش‌فرض */
-  width: 80%; /* یا width دلخواه */
-}
-
-.vfv .note {
-  position: absolute;
-  top: 73%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* کلید اصلی */
-  padding: 12px 20px;
-  font-size: 1rem;
-  color: #17212b;
-  margin: 0; /* حذف margin پیش‌فرض */
-  width: 80%; /* یا width دلخواه */
-}
-
-.vfv .open-post {
-  position: absolute;
-  bottom: 14px;
-  left: 20px;
-  right: 20px;
-  padding: 12px 20px;
-  border: none;
+  width: 140px;
+  height: auto;
   border-radius: 10px;
-  background: #47a521;
-  color: white;
-  cursor: pointer;
-  font-size: 20px;
-  font-family: lalezar;
+  display: block;
+  margin: 0 auto;
 }
+
+
 
 .main-menu {
   display: none;
@@ -180,22 +132,73 @@ p {
   font-size: 15px;
 }
 
-.icon {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 140px; /* یا هر مقدار */
-  height: auto; /* نسبت ابعاد حفظ میشه */
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto; /* وسط‌چین */
-}
-
-.vfv-req {
+.vfv {
   display: block;
   width: 75%;
-  height: 62%;
+  height: 35%;
+  background-color: #fbfbfc;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+}
+
+.vfv .timer-counter {
+  position: absolute;
+  top: 44.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #17212b;
+  font-size: 3rem;
+}
+
+.vfv .view-count {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* کلید اصلی */
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  color: #17212b;
+  margin: 0; /* حذف margin پیش‌فرض */
+  width: 80%; /* یا width دلخواه */
+}
+
+.vfv .note {
+  position: absolute;
+  top: 73%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* کلید اصلی */
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #17212b;
+  margin: 0; /* حذف margin پیش‌فرض */
+  width: 80%; /* یا width دلخواه */
+}
+
+.vfv .open-post {
+  position: absolute;
+  bottom: 14px;
+  left: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #47a521;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: lalezar;
+}
+
+
+.vfv-req {
+  display: none;
+  width: 75%;
+  height: 480px;
   background-color: #fbfbfc;
   color: white;
   padding: 20px;
@@ -208,7 +211,7 @@ p {
 
 .vfv-req .title{
   position: absolute;
-  top: 11%;
+  top: 13%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.5rem;
@@ -216,7 +219,7 @@ p {
 
 .vfv-req .description{
   position: absolute;
-  top: 14%;
+  top: 17%;
   left: 10px;
   right: 10px;
   font-size: 1.1rem;
@@ -224,7 +227,7 @@ p {
 
 .vfv-req .rules{
   position: absolute;
-  top: 21%;
+  top: 23%;
   width: 90%;
   font-size: 1rem;
   direction: rtl;
@@ -271,4 +274,34 @@ p {
   cursor: pointer;
   font-size: 20px;
   font-family: lalezar;
+}
+
+.vfv-complete{
+  display: none;
+  width: 75%;
+  height: 150px;
+  background-color: #fbfbfc;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+}
+
+.vfv-complete .text{
+  font-size: 1.6rem;
+  position: absolute;
+  top: 23%;
+  left: 10px;
+  right: 10px;
+}
+
+.vfv-complete .description{
+  font-size: 1.1rem;
+  position: absolute;
+  top: 55%;
+  left: 10px;
+  right: 10px;
 }

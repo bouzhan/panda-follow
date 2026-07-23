@@ -3,19 +3,12 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
-let user_id;
-
-setTimeout(() => {
-    user_id = tg.initDataUnsafe.user?.id;
-    document.getElementById("vfv-logs").textContent = String(user_id);
-}, 5000);
-
-
+let user_id = tg.initDataUnsafe.user?.id;
 
 let links = [];
 let links_id = 0;
 
-let view_count = 0;
+let view_count = 99;
 let timer;
 let time;
 
@@ -82,7 +75,7 @@ document.addEventListener("visibilitychange", async () => {
     if (time != 0) {
       document.getElementById("vfv-view-count").style.color = "red";
       document.getElementById("vfv-view-count").innerHTML =
-        "زود تر از زمان برگشتی از اول باید پست رو ببینی";
+        "زود برگشتی هر پست رو باید حداقل 10 ثانیه ببینی و ریکت قلب بزاری";
       document.getElementById("vfv-open-post").disabled = false;
       clearInterval(timer);
     }
@@ -99,7 +92,11 @@ function startTimer() {
       document.getElementById("vfv-open-post").disabled = false;
       links_id++;
       view_count++;
-
+      
+      if(view_count >= 100){
+        document.getElementById("vfv-panel").style.display = "none";
+        document.getElementById("vfv-req").style.display = "block";
+      }
       document.getElementById("vfv-view-count").innerHTML =
         `تعداد بازدید های شما: ${view_count} از 100`;
       document.getElementById("vfv-view-count").style.color = "black";
