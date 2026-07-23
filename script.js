@@ -8,7 +8,7 @@ let user_id = tg.initDataUnsafe.user?.id;
 let links = [];
 let links_id = 0;
 
-let view_count = 99;
+let view_count = 0;
 let timer;
 let time;
 
