@@ -1,63 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="telegram-web-app.js"></script>
     <title>Panda Follow</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="main-menu" id="main-menu">
+      <img src="icon.png" alt="icon" class="icon" />
+      <h2>نوع فعالیتت رو انتخاب کن</h2>
+      <button id="vfv-start" class="vfv-button">ویو فور ویو ( vfv ) فعال</button>
+      <button id="vfv" class="jfj-button">جوین فور جوین  ( jfj )   به زودی   ...</button>
+      <p class="vfv-description">
+        ویو فور ویو: با دیدن پست بقیه امتیاز کسب کن و پست خودت رو به بقیه نشون
+        بده
+      </p>
+      <p class="jfj-description">
+        جوین فور جوین: عضو کانال بقیه شو و امتیاز بدست بیار و ممبر بگیر
+      </p>
+    </div>
 
-<div class="main-menu">
-    <img src="icon.png" alt="icon"  class="icon">
-    <h2>نوع فعالیتت رو انتخاب کن</h2>
-    <button id="vfv" class="vfv-button">ویو فور ویو ( vfv )</button>
-    <button id="vfv" class="jfj-button">جوین فور جوین ( vfv )</button>
-    <p class="vfv-description">ویو فور ویو: با دیدن پست بقیه امتیاز کسب کن و پست خودت رو به بقیه نشون بده</p>
-    <p class="jfj-description">جوین فور جوین: عضو کانال بقیه شو و امتیاز بدست بیار و ممبر بگیر</p>
-</div>
+    <div class="vfv-tut" id="vfv-tut">
+      <img src="icon.png" alt="آیکون" class="icon" />
+      <p class="channel">برای فعالیت و دریافت ویو و جوین رایگان باید چنل رسمی پاندا فالو رو جوین و عضو شده باشی</p>
+      <button class="channel-btn" id="panda-follow-channel">برو به چنل رسمی پاندا فالو</button>
+      <p class="post">حتما پست آموزش برنلمه رو بخون کمکت میکنه</p>
+      <button class="post-btn" id="vfv-tut-post">برو به پست آموزشی</button>
+      <p class="start">شروع کار با برنامه</p>
+      <button class="start-btn" id="main-menu-btn">شروع</button>
+    </div>
 
+    <div class="vfv" id="vfv-panel">
+      <p id="vfv-view-count" class="view-count">
+        تعداد بازدید های فعلی شما: 0 از 100
+      </p>
+      <button id="vfv-open-post" class="open-post">مشاهده پست بعدی</button>
+      <img src="icon.png" alt="آیکون" class="icon" />
+    </div>
 
-<div class="vfv" id="vfv-panel">
+    <div class="vfv-req" id="vfv-req">
+      <img src="icon.png" alt="icon" class="icon" />
 
-<p id="vfv-view-count" class="view-count">تعداد بازدید های فعلی شما: 0 از 100</p>
-<p class="note">هر پست رو باید 10 ثانیه ببینی و زودتر برنگردی</p>
-<button id="vfv-open-post" class="open-post">مشاهده پست بعدی</button>
-<img src="icon.png" alt="آیکون" class="icon">
-<p id="vfv-timer-counter" class="timer-counter">10</p>
+      <p class="title">همه چیز آماده است!</p>
+      <p class="description">میتونی برای پست خودت درخواست بدی بری توی صف ویو</p>
+      <p class="rules">
+        قوانین:<br />•کانال شما باید عمومی باشد <br />•پست شما نباید محتوای جنسی
+        و غیر اخلاقی داشته باشد <br />• نمایش پست ها به صورت مزایده ای می باشد و
+        هر پست جدید بعد از ثبت تا مدتی در لیست نمایش قرار میگیرد <br />• نمونه
+        لینک معتبر: <br />https://t.me/boozhan/1457
+      </p>
+      <p id="vfv-logs" class="logs"></p>
+      <input
+        type="text"
+        class="link-input"
+        id="vfv-req-link-input"
+        placeholder="لینک پست خود را وارد کنید"
+      />
+      <button id="vfv-req-sumbit" class="sumbit">ارسال برای بررسی</button>
+    </div>
 
-</div>
+    <div class="vfv-complete">
+      <img src="icon.png" alt="icon" class="icon" />
+      <p class="text">پست شما برای بررسی ارسال شد ✅</p>
+      <p class="description">نتیجه از طریق ربات اطلاع رسانی می شود</p>
+    </div>
 
-<div class="vfv-req" id="vfv-req">
-    <img src="icon.png" alt="icon" class="icon">
-
-    <p class="title">همه چیز آماده است!</p>
-    <p class="description">میتونی برای پست خودت درخواست بدی بری توی صف ویو</p>
-    <p class="rules">قوانین:<br>•کانال شما باید عمومی باشد
-        <br>•پست شما نباید محتوای جنسی و غیر اخلاقی داشته باشد
-        <br>• نمایش پست ها به صورت مزایده ای می باشد و هر پست جدید بعد از ثبت  تا مدتی در لیست نمایش قرار میگیرد
-        <br>• نمونه لینک معتبر:
-        <br>https://t.me/boozhan/1457
-    </p>
-    <p id ="vfv-logs" class="logs"></p>
-    <input type="text" class="link-input" id="vfv-req-link-input" placeholder="لینک پست خود را وارد کنید">
-    <button id="vfv-req-sumbit" class="sumbit">ارسال برای بررسی</button>
-</div>
-
-<div class="vfv-complete">
-    <img src="icon.png" alt="icon" class="icon">
-    <p class="text">پست شما برای بررسی ارسال شد ✅</p>
-    <p class="description">نتیجه از طریق ربات اطلاع رسانی می شود</p>
-</div>
-
-
-
-
-
-<script src ="script.js?v=7"></script>  
-
-
-
-</body>
+    <script src="script.js?v=7"></script>
+  </body>
 </html>

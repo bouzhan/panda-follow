@@ -8,7 +8,7 @@ let user_id = tg.initDataUnsafe.user?.id;
 let links = [];
 let links_id = 0;
 
-let view_count = 99;
+let view_count = 0;
 let timer;
 let time;
 
@@ -26,6 +26,24 @@ document.getElementById("vfv-open-post").onclick = () => {
   time = 10;
   startTimer();
 };
+
+document.getElementById("panda-follow-channel").onclick = () =>{
+  tg.openTelegramLink("https://t.me/panda_follow");
+}
+
+document.getElementById("vfv-tut-post").onclick =  () =>{
+  tg.openTelegramLink("https://t.me/panda_follow/29)");
+}
+
+document.getElementById("main-menu-btn").onclick = () => {
+  document.getElementById("vfv-tut").style.display = "none";
+  document.getElementById("main-menu").style.display = "block";
+}
+
+document.getElementById("vfv-start").onclick = () => {
+  document.getElementById("main-menu").style.display = "none";
+  document.getElementById("vfv-panel").style.display = "block";
+}
 
 document.getElementById("vfv-req-sumbit").onclick = () => {
   let link = document.getElementById("vfv-req-link-input").value;
@@ -85,7 +103,6 @@ document.addEventListener("visibilitychange", async () => {
 function startTimer() {
   timer = setInterval(() => {
     time--;
-    document.getElementById("vfv-timer-counter").innerHTML = time;
 
     if (time <= 0) {
       clearInterval(timer);
