@@ -4,6 +4,7 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
+
 let user_id = tg.initDataUnsafe.user.id;
 
 let links = [];
