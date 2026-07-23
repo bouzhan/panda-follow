@@ -36,6 +36,7 @@ document.getElementById("vfv-req-sumbit").onclick = () => {
     return;
   }
 
+  SendLink(link, user_id);
 };
 
 async function SendLink(link, user_id) {
