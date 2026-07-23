@@ -8,7 +8,7 @@ let user_id = tg.initDataUnsafe.user?.id;
 let links = [];
 let links_id = 0;
 
-let view_count = 0;
+let view_count = 99;
 let timer;
 let time;
 
@@ -43,6 +43,7 @@ document.getElementById("main-menu-btn").onclick = () => {
 document.getElementById("vfv-start").onclick = () => {
   document.getElementById("main-menu").style.display = "none";
   document.getElementById("vfv-panel").style.display = "block";
+  
 }
 
 document.getElementById("vfv-req-sumbit").onclick = () => {
@@ -80,6 +81,9 @@ async function SendLink(link, user_id) {
     }
     
     document.getElementById("vfv-logs").textContent = result;
+    document.getElementById("vfv-req").style.display = "none";
+    document.getElementById('vfv-complete').style.display = "block";
+
     console.log("✅ پاسخ دریافت شد:", result);
     return result;
 
