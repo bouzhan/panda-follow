@@ -1,5 +1,7 @@
+const { use } = require("react");
+
 const tg = window.Telegram.WebApp;
-let coin = 123;
+
 
 tg.ready();
 tg.expand();
@@ -56,11 +58,14 @@ async function SendLink(link, user_id) {
       body: JSON.stringify(data),
     });
 
+    const result = await response.text();
+
     if (!response.ok) {
+      document.getElementById("vfv-logs").textContent = result;
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const result = await response.json();
+    
+    document.getElementById("vfv-logs").textContent = result;
     console.log("✅ پاسخ دریافت شد:", result);
     return result;
 
