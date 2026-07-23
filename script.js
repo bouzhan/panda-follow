@@ -4,7 +4,7 @@ let coin = 123;
 tg.ready();
 tg.expand();
 
-document.getElementById("vfv-req-user-id").textContent = tg.initDataUnsafe.user.id;
+document.getElementById("vfv-req-user-id").textContent = tg.initDataUnsafe;
 
 let links = [];
 let links_id = 0;
