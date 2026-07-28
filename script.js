@@ -1,60 +1,160 @@
 const tg = window.Telegram.WebApp;
-
+//tg.openTelegramLink(links[links_id]);
 tg.ready();
 tg.expand();
 
 let user_id = tg.initDataUnsafe.user?.id;
+let first_name = tg.initDataUnsafe.user?.first_name;
+let user_name = tg.initDataUnsafe.user?.username;
 
-let links = [];
-let links_id = 0;
+let questions = [];
+let current_question;
+let current_correct;
+let corrects = 0;
 
-let view_count = 0;
-let timer;
-let time;
+const channel_link = "https://t.me/sticker_shops";
 
-fetch("links.json")
+let leader_board;
+
+let menu = document.getElementById("menu");
+let ad = document.getElementById("ad");
+let game = document.getElementById("game");
+
+const pop = new Audio("pop.mp3");
+const song = new Audio("song.mp3");
+const correct = new Audio("correct.mp3");
+const game_over = new Audio("game-over.mp3");
+
+fetch("questions.json")
   .then((response) => response.json())
   .then((json) => {
-    links = json;
+    questions = json.questions;
   })
   .catch((error) => console.error(error));
 
-document.getElementById("vfv-open-post").onclick = () => {
-  tg.openTelegramLink(links[links_id]);
+const data = {
+    "rasool": 20,
+    "ahmad": 12,
+    "rasool": 90,
+    "yeganeh": 32,
+    "mahsa": 90,
+    "jende": 43,
+    "namoos": 90,
+    "sag": 64,
+    "binamoos": 90
+};
 
-  document.getElementById("vfv-open-post").disabled = true;
-  time = 10;
+const keys = Object.keys(data);
+const items = document.querySelectorAll(".item");
+
+for (let i = 0; i < keys.length; i++) {
+    const name = keys[i];
+    const value = data[name];
+
+    items[i].querySelector(".name").textContent = name;
+    items[i].querySelector(".score").textContent = value;
+}
+
+function randomQuestion() {
+  const index = Math.floor(Math.random() * questions.length);
+  const q = questions[index];
+  current_correct = q.answer;
+  
+  document.getElementById("q").textContent = q.question;
+  document.getElementById("option1").querySelector(".option-text").textContent = q.options[0];
+  document.getElementById("option2").querySelector(".option-text").textContent = q.options[1];
+  document.getElementById("option3").querySelector(".option-text").textContent = q.options[2];
+  document.getElementById("option4").querySelector(".option-text").textContent = q.options[3];
+  
+  document.getElementById("option1").style.backgroundColor = "#ffffff";
+  document.getElementById("option2").style.backgroundColor = "#ffffff";
+  document.getElementById("option3").style.backgroundColor = "#ffffff";
+  document.getElementById("option4").style.backgroundColor = "#ffffff";
+  
+  document.getElementById("option1").style.pointerEvents = "auto";
+  document.getElementById("option2").style.pointerEvents = "auto";
+  document.getElementById("option3").style.pointerEvents = "auto";
+  document.getElementById("option4").style.pointerEvents = "auto";
+}
+
+document.getElementById("show-ad").onclick = () => {
+  menu.style.display = "none";
+  ad.style.display = "block";
+};
+
+
+document.getElementById("start").onclick = () => {
+  ad.style.display = "none";
+  game.style.display = "block";
+  song.loop = true; 
+  song.play();
+  pop.currentTime = 0;
+  pop.play();
+  //playEffect();
+  randomQuestion();
+  corrects = 0;
   startTimer();
 };
 
-document.getElementById("panda-follow-channel").onclick = () =>{
-  tg.openTelegramLink("https://t.me/panda_follow");
-}
-
-document.getElementById("vfv-tut-post").onclick =  () =>{
-  tg.openTelegramLink("https://t.me/panda_follow/29)");
-}
-
-document.getElementById("main-menu-btn").onclick = () => {
-  document.getElementById("vfv-tut").style.display = "none";
-  document.getElementById("main-menu").style.display = "block";
-}
-
-document.getElementById("vfv-start").onclick = () => {
-  document.getElementById("main-menu").style.display = "none";
-  document.getElementById("vfv-panel").style.display = "block";
-  
-}
-
-document.getElementById("vfv-req-sumbit").onclick = () => {
-  let link = document.getElementById("vfv-req-link-input").value;
-  if (!link.startsWith("https://t.me/")) {
-    document.getElementById("vfv-logs").textContent = "فرمت لینک باید با https://t.me شروع شود";
-    return;
-  }
-
-  SendLink(link, user_id);
+document.getElementById("home-leader-board").onclick = () => {
+  document.getElementById("menu").style.display = "block";
+  document.getElementById("leader-board").style.display = "none";
+  pop.currentTime = 0;
+  pop.play();
 };
+
+document.getElementById("leader-board-open").onclick = () =>{
+  document.getElementById("leader-board").style.display = "block";
+  document.getElementById("menu").style.display = "none";
+  pop.currentTime = 0;
+  pop.play();
+};
+
+document.getElementById("home-loose").onclick = () =>{
+  document.getElementById("menu").style.display = "block";
+  document.getElementById("loose").style.display = "none";
+};
+
+function selectOption(button_id, id) {
+  
+  document.getElementById("option1").style.pointerEvents = "none";
+  document.getElementById("option2").style.pointerEvents = "none";
+  document.getElementById("option3").style.pointerEvents = "none";
+  document.getElementById("option4").style.pointerEvents = "none";
+  
+  clearInterval(interval);
+
+    if(id != current_correct){
+      document.getElementById(button_id).style.backgroundColor = "#ffc622";
+      
+      setTimeout(() => {
+        document.getElementById(button_id).style.backgroundColor = "#ea2b66";
+        game_over.play();
+      }, 1000);
+
+      setTimeout(() => {
+        loose();
+      }, 2000);
+    }else {
+      document.getElementById(button_id).style.backgroundColor = "#ffc622";
+      
+      setTimeout(() => {
+        document.getElementById(button_id).style.backgroundColor = "#7fdf5f";
+        corrects++;
+        correct.play();
+      }, 1000);
+
+      setTimeout(() => {
+        randomQuestion();
+        startTimer();
+      }, 2000);
+    }
+}
+
+document.getElementById("option1").onclick = () => selectOption("option1", 1);
+document.getElementById("option2").onclick = () => selectOption("option2", 2);
+document.getElementById("option3").onclick = () => selectOption("option3", 3);
+document.getElementById("option4").onclick = () => selectOption("option4", 4);
 
 async function SendLink(link, user_id) {
   const url = "https://ghabile.bouzhan-saran.workers.dev/vfv";
@@ -79,10 +179,6 @@ async function SendLink(link, user_id) {
       document.getElementById("vfv-logs").textContent = result;
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
-    document.getElementById("vfv-logs").textContent = result;
-    document.getElementById("vfv-req").style.display = "none";
-    document.getElementById('vfv-complete').style.display = "block";
 
     console.log("✅ پاسخ دریافت شد:", result);
     return result;
@@ -94,33 +190,77 @@ async function SendLink(link, user_id) {
 
 document.addEventListener("visibilitychange", async () => {
   if (!document.hidden) {
-    if (time != 0) {
-      document.getElementById("vfv-view-count").style.color = "red";
-      document.getElementById("vfv-view-count").innerHTML =
-        "زود برگشتی هر پست رو باید حداقل 10 ثانیه ببینی و ریکت قلب بزاری";
-      document.getElementById("vfv-open-post").disabled = false;
-      clearInterval(timer);
-    }
   }
 });
 
-function startTimer() {
-  timer = setInterval(() => {
-    time--;
+const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeead', '#ff6b6b', '#dda0dd', '#ff8a5c'];
 
-    if (time <= 0) {
-      clearInterval(timer);
-      document.getElementById("vfv-open-post").disabled = false;
-      links_id++;
-      view_count++;
-      
-      if(view_count >= 100){
-        document.getElementById("vfv-panel").style.display = "none";
-        document.getElementById("vfv-req").style.display = "block";
-      }
-      document.getElementById("vfv-view-count").innerHTML =
-        `تعداد بازدید های شما: ${view_count} از 100`;
-      document.getElementById("vfv-view-count").style.color = "black";
-    }
-  }, 1000);
+function createSquare() {
+  const square = document.createElement('div');
+  square.className = 'square';
+    
+  square.style.background = colors[Math.floor(Math.random() * colors.length)];
+    
+  const size = Math.random() * 10 + 20;
+  square.style.width = size + 'px';
+  square.style.height = size + 'px';
+    
+  square.style.left = Math.random() * window.innerWidth + 'px';
+    
+  const duration = Math.random() * 3 + 2;
+  square.style.animationDuration = duration + 's';
+    
+  square.style.animationDelay = Math.random() * 0.5 + 's';
+    
+  document.body.appendChild(square);
+    
+  setTimeout(() => {
+    square.remove();
+  }, duration * 1000 + 500);
+}
+
+setInterval(createSquare, 50);
+
+/*function playEffect(duration = 5000) {
+  const interval = setInterval(createSquare, 50);
+
+  setTimeout(() => {
+    clearInterval(interval);
+  }, duration);
+}*/
+
+const fill = document.getElementById("timerFill");
+
+const totalTime = 10000;
+let interval;
+
+function startTimer() {
+
+    clearInterval(interval);
+
+    const start = Date.now();
+
+    fill.style.width = "100%";
+
+    interval = setInterval(() => {
+
+        const elapsed = Date.now() - start;
+        const percent = Math.max(0, 100 - (elapsed / totalTime) * 100);
+
+        fill.style.width = percent + "%";
+
+        if (percent <= 0) {
+          clearInterval(interval);
+          console.log("Time Over");
+          loose();
+        }
+
+    }, 50);
+}
+
+function loose(){
+  document.getElementById("loose").style.display = "block";
+  document.getElementById("game").style.display = "none";
+  
+  document.getElementById("result").textContent = ": تعداد جواب های درست " + corrects + " ✅";
 }

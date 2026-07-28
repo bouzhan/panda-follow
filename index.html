@@ -8,65 +8,166 @@
     <title>Panda Follow</title>
   </head>
   <body>
-    <div class="main-menu" id="main-menu">
-      <img src="icon.png" alt="icon" class="icon" />
-      <h2>نوع فعالیتت رو انتخاب کن</h2>
-      <button id="vfv-start" class="vfv-button">ویو فور ویو ( vfv ) فعال</button>
-      <button id="vfv" class="jfj-button">جوین فور جوین  ( jfj )   به زودی   ...</button>
-      <p class="vfv-description">
-        ویو فور ویو: با دیدن پست بقیه امتیاز کسب کن و پست خودت رو به بقیه نشون
-        بده
-      </p>
-      <p class="jfj-description">
-        جوین فور جوین: عضو کانال بقیه شو و امتیاز بدست بیار و ممبر بگیر
-      </p>
+
+    <div style="display: none;" class="menu" id="menu">
+      <img src="logo.png" alt="آیکون" class="logo" />
+      <h1>کوییز</h1>
+      <h5>دانش خودت رو محک بزن!</h5>
+      <h3>سلام سوگند عزیز! ☺</h3>
+      <button class="start" id="show-ad">شروع بازی</button>
+      <button class="leader-board-open" id="leader-board-open">برترین ها</button>
+      <h5>بازی کن، استارز ببر !</h5>
+      <img src="star.png" alt="آیکون" class="star"/>
+      <p>فروش عمده استیکر چسبی لپ تاپ و موبایل</p>
+      <button style="background-color: #ff66a7" class="home">برو به چنل استیکرز شاپ</button>
+    </div>
+    
+    <div style="display: none;" class="game" id="game">
+      
+      <h4>کوییز چهار گزینه ای</h4>
+      <div class="timer">
+        <div class="timer-fill" id="timerFill"></div>
+      </div>
+      
+      <div class="question" id="question">
+        <img src="logo.png" alt="آیکون" class="logo"/>
+        <p class="q" id="q">پایتخت کشور ایران کدا یک از شهر های زیر می باشد</p>
+        
+        <div class="option" id="option1">
+          <div class="option-number">
+            <p class="option-name">الف</p>
+          </div>
+          <p class="option-text">اصفهان</p>
+        </div>
+        <div class="option" id="option2">
+          <div class="option-number">
+            <p class="option-name">ب</p>
+          </div>
+          <p class="option-text">شیراز</p>
+        </div>
+        <div class="option" id="option3">
+          <div class="option-number">
+            <p class="option-name">ج</p>
+          </div>
+          <p class="option-text">شیراز</p>
+        </div>
+        <div class="option" id="option4">
+          <div class="option-number">
+            <p class="option-name">د</p>
+          </div>
+          <p class="option-text">تبریز</p>
+        </div>
+      </div>
+      
+      <p style="font-size: 14px;">فروش عمده و تکی استیکر پشت چسب دار گوشی و لپ تاپ</p>
+      <button style="background-color: #ff5c87" class="home">برو به چنل  استیکرز شاپ</button>
     </div>
 
-    <div class="vfv-tut" id="vfv-tut">
-      <img src="icon.png" alt="آیکون" class="icon" />
-      <p class="channel">برای فعالیت و دریافت ویو و جوین رایگان باید چنل رسمی پاندا فالو رو جوین و عضو شده باشی</p>
-      <button class="channel-btn" id="panda-follow-channel">برو به چنل رسمی پاندا فالو</button>
-      <p class="post">حتما پست آموزش برنلمه رو بخون کمکت میکنه</p>
-      <button class="post-btn" id="vfv-tut-post">برو به پست آموزشی</button>
-      <p class="start">شروع کار با برنامه</p>
-      <button class="start-btn" id="main-menu-btn">شروع</button>
+    <div style="display: none;" class="loose" id="loose">
+      <img src="loose.png" alt="آیکون" class="loose-image" />
+      <p>باختی، عیبی نداره !</p>
+      <p id="result">تعداد جواب های درست :  ✅21</p>
+      <button class="home" id="home-loose">بازگشت به خانه</button>
+      
+      <p style="margin-top: 30px">👇 فقط با یک میلیون تومن آنلاین شاپ بزن 👇</p>
+      <button style="background-color: #ff66a7; font-size: 1.1rem" class="home">چنل فروش عمده استیکر ( کلیک کن )</button>
     </div>
-
-    <div class="vfv" id="vfv-panel">
-      <p id="vfv-view-count" class="view-count">
-        تعداد بازدید های فعلی شما: 0 از 100
-      </p>
-      <button id="vfv-open-post" class="open-post">مشاهده پست بعدی</button>
-      <img src="icon.png" alt="آیکون" class="icon" />
+    
+    <div style="display: block;" class="leader-board" id="leader-board">
+      <h3>برترین ها</h3>
+      <h5 style="color: black">امتیازات هر 60 دقیقه بروز می شوند</h5>
+      
+      <div class="item-titles">
+        <p class="rank">رتبه</p>
+        <p class="name">نام</p>
+        <p class="score">رکورد</p>
+        <p class="gift">جایزه</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      
+      <div class="item">
+        <p class="rank">1.</p>
+        <p class="name">زهرا حسینی</p>
+        <p class="score">123</p>
+        <p class="gift">100</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      
+      <div class="item">
+        <p class="rank">2.</p>
+        <p class="name">mohaddes</p>
+        <p class="score">45</p>
+        <p class="gift">75</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">3.</p>
+        <p class="name">mehran</p>
+        <p class="score">45</p>
+        <p class="gift">50</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">4.</p>
+        <p class="name">gandom</p>
+        <p class="score">45</p>
+        <p class="gift">20</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">5.</p>
+        <p class="name">liiiili</p>
+        <p class="score">45</p>
+        <p class="gift">20</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">6.</p>
+        <p class="name">not today</p>
+        <p class="score">45</p>
+        <p class="gift">10</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">7.</p>
+        <p class="name">zizo</p>
+        <p class="score">45</p>
+        <p class="gift">10</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">8.</p>
+        <p class="name">shabooo</p>
+        <p class="score">45</p>
+        <p class="gift">10</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">9.</p>
+        <p class="name">kaftar</p>
+        <p class="score">45</p>
+        <p class="gift">10</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      <div class="item">
+        <p class="rank">10.</p>
+        <p class="name">jendeha</p>
+        <p class="score">45</p>
+        <p class="gift">10</p>
+        <img src="star.png" alt="آیکون" class="star"/>
+      </div>
+      
+      <button class="home" id="home-leader-board">بازگشت به خانه</button>
+      
+      <p style="margin-top: 40px;">👇 فقط با یک میلیون تومن آنلاین شاپ  بزن 👇</p>
+      <button style="background-color: #ff597d" class="home">چنل استیکر عمده ( کلیک کن )</button>
     </div>
-
-    <div class="vfv-req" id="vfv-req">
-      <img src="icon.png" alt="icon" class="icon" />
-
-      <p class="title">همه چیز آماده است!</p>
-      <p class="description">میتونی برای پست خودت درخواست بدی بری توی صف ویو</p>
-      <p class="rules">
-        قوانین:<br />•کانال شما باید عمومی باشد <br />•پست شما نباید محتوای جنسی
-        و غیر اخلاقی داشته باشد <br />• نمایش پست ها به صورت مزایده ای می باشد و
-        هر پست جدید بعد از ثبت تا مدتی در لیست نمایش قرار میگیرد <br />• نمونه
-        لینک معتبر: <br />https://t.me/boozhan/1457
-      </p>
-      <p id="vfv-logs" class="logs"></p>
-      <input
-        type="text"
-        class="link-input"
-        id="vfv-req-link-input"
-        placeholder="لینک پست خود را وارد کنید"
-      />
-      <button id="vfv-req-sumbit" class="sumbit">ارسال برای بررسی</button>
+    
+    <div class="ad" id="ad">
+      <img src="ad.png" alt="آیکون" class="ad-image" />
+      <button class="button">برو چنل استیکرز شاپ</button>
+      <button class="button" id="start">برو به بازی</button>
     </div>
-
-    <div class="vfv-complete" id="vfv-complete">
-      <img src="icon.png" alt="icon" class="icon" />
-      <p class="text">پست شما برای بررسی ارسال شد ✅</p>
-      <p class="description">نتیجه از طریق ربات اطلاع رسانی می شود</p>
-    </div>
-
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=7.1"></script>
   </body>
 </html>
