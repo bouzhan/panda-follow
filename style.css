@@ -15,7 +15,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  position: fixed;
   margin: 0;
   overflow: hidden;
   user-select: none;
@@ -205,6 +207,18 @@ h3{
   font-family: lalezar;
   color: white;
   font-size: 20px;
+}
+
+.channel{
+  position: relative;
+  background-color: #ff3983;
+  width: 80%;
+  border-radius: 40px;
+  border: none; 
+  height: 50px;
+  font-family: lalezar;
+  color: white;
+  font-size: 1rem;
 }
 
 .loose{

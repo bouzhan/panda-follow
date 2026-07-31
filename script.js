@@ -1,5 +1,5 @@
 const tg = window.Telegram.WebApp;
-//tg.openTelegramLink(links[links_id]);
+
 tg.ready();
 tg.expand();
 
@@ -7,12 +7,14 @@ let user_id = tg.initDataUnsafe.user?.id;
 let first_name = tg.initDataUnsafe.user?.first_name;
 let user_name = tg.initDataUnsafe.user?.username;
 
+document.getElementById("name").textContent = "سلام " + first_name + " عزیز ! 🎃";
 let questions = [];
 let current_question;
 let current_correct;
 let corrects = 0;
-
-const channel_link = "https://t.me/sticker_shops";
+let record;
+let particles;
+const channel_link = "https://t.me/chaap_aks";
 
 let leader_board;
 
@@ -25,6 +27,8 @@ const song = new Audio("song.mp3");
 const correct = new Audio("correct.mp3");
 const game_over = new Audio("game-over.mp3");
 
+get_record(6025961065);
+
 fetch("questions.json")
   .then((response) => response.json())
   .then((json) => {
@@ -35,7 +39,7 @@ fetch("questions.json")
 const data = {
     "rasool": 20,
     "ahmad": 12,
-    "rasool": 90,
+    "rasoodl": 90,
     "yeganeh": 32,
     "mahsa": 90,
     "jende": 43,
@@ -80,8 +84,52 @@ function randomQuestion() {
 document.getElementById("show-ad").onclick = () => {
   menu.style.display = "none";
   ad.style.display = "block";
+  document.getElementById("start").disabled = true;
+  startAdTimer();
+  const ads = [
+    "ad1.jpg",
+    "ad2.jpg",
+    "ad32.jpg",
+    "ad4.jpg",
+    "ad5.jpg",
+    "ad74.jpg"
+  ];
+  const randomIndex = Math.floor(Math.random() * ads.length);
+  document.getElementById("ad-pic").src = ads[randomIndex];
+  clearInterval(particles);
 };
 
+const ad_buttons = document.querySelectorAll(".channel");
+
+ad_buttons.forEach(ad_button => {
+    ad_button.addEventListener("click", () => {
+      tg.openTelegramLink(channel_link);
+    });
+});
+
+
+function startAdTimer() {
+    let ad_time = 10;
+    document.getElementById("start").textContent = "10";
+    let ad_timer = setInterval(() => {
+
+        ad_time--;
+        document.getElementById("start").textContent = String(ad_time);
+        if (ad_time <= 0) {
+            clearInterval(ad_timer);
+            console.log("زمان تمام شد");
+            document.getElementById("start").textContent = "برو به بازی";
+            document.getElementById("start").disabled = false;
+        }
+
+    }, 1000);
+}
+
+const ad_pic = document.getElementById("ad-pic");
+
+ad_pic.addEventListener("click", () => {
+    tg.openTelegramLink(channel_link);
+});
 
 document.getElementById("start").onclick = () => {
   ad.style.display = "none";
@@ -94,6 +142,7 @@ document.getElementById("start").onclick = () => {
   randomQuestion();
   corrects = 0;
   startTimer();
+  particles = setInterval(createSquare, 100);
 };
 
 document.getElementById("home-leader-board").onclick = () => {
@@ -115,31 +164,43 @@ document.getElementById("home-loose").onclick = () =>{
   document.getElementById("loose").style.display = "none";
 };
 
-function selectOption(button_id, id) {
+const options = [
+    document.getElementById("option1"),
+    document.getElementById("option2"),
+    document.getElementById("option3"),
+    document.getElementById("option4")
+];
+
+document.getElementById("option1").onclick = () => selectOption(0);
+document.getElementById("option2").onclick = () => selectOption(1);
+document.getElementById("option3").onclick = () => selectOption(2);
+document.getElementById("option4").onclick = () => selectOption(3);
+
+function selectOption(selected) {
   
-  document.getElementById("option1").style.pointerEvents = "none";
-  document.getElementById("option2").style.pointerEvents = "none";
-  document.getElementById("option3").style.pointerEvents = "none";
-  document.getElementById("option4").style.pointerEvents = "none";
+  options[0].style.pointerEvents = "none";
+  options[1].style.pointerEvents = "none";
+  options[2].style.pointerEvents = "none";
+  options[3].style.pointerEvents = "none";
   
   clearInterval(interval);
 
-    if(id != current_correct){
-      document.getElementById(button_id).style.backgroundColor = "#ffc622";
-      
+    if(selected + 1 != current_correct){
+      options[selected].style.backgroundColor = "#ffc622";
       setTimeout(() => {
-        document.getElementById(button_id).style.backgroundColor = "#ea2b66";
+        options[selected].style.backgroundColor = "#ea2b66";
+        options[current_correct - 1].style.background = "#7fdf5f";
         game_over.play();
       }, 1000);
 
       setTimeout(() => {
         loose();
-      }, 2000);
+      }, 3000);
     }else {
-      document.getElementById(button_id).style.backgroundColor = "#ffc622";
+      options[selected].style.backgroundColor = "#ffc622";
       
       setTimeout(() => {
-        document.getElementById(button_id).style.backgroundColor = "#7fdf5f";
+        options[selected].style.backgroundColor = "#7fdf5f";
         corrects++;
         correct.play();
       }, 1000);
@@ -151,17 +212,13 @@ function selectOption(button_id, id) {
     }
 }
 
-document.getElementById("option1").onclick = () => selectOption("option1", 1);
-document.getElementById("option2").onclick = () => selectOption("option2", 2);
-document.getElementById("option3").onclick = () => selectOption("option3", 3);
-document.getElementById("option4").onclick = () => selectOption("option4", 4);
 
-async function SendLink(link, user_id) {
-  const url = "https://ghabile.bouzhan-saran.workers.dev/vfv";
+async function send_score(record, user_id) {
+  const url = "https://ghabile.bouzhan-saran.workers.dev/quiz";
 
   const data = {
     user_id: user_id,
-    link: link
+    record: record
   };
 
   try {
@@ -176,10 +233,40 @@ async function SendLink(link, user_id) {
     const result = await response.text();
 
     if (!response.ok) {
-      document.getElementById("vfv-logs").textContent = result;
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    console.log("✅ پاسخ دریافت شد:", result);
+    return result;
+
+  } catch (error) {
+    console.error("❌ خطا در ارسال درخواست:", error);
+  }
+}
+
+async function get_record(user_id) {
+  const url = "https://ghabile.bouzhan-saran.workers.dev/get_records";
+
+  const data = {
+    user_id: user_id,
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.text();
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    record = Number(result);
+    document.getElementById("record").textContent = "بهترین رکورد امروزت: " + result;
     console.log("✅ پاسخ دریافت شد:", result);
     return result;
 
@@ -201,12 +288,12 @@ function createSquare() {
     
   square.style.background = colors[Math.floor(Math.random() * colors.length)];
     
-  const size = Math.random() * 10 + 20;
+  const size = Math.random() * 12 + 10;
   square.style.width = size + 'px';
   square.style.height = size + 'px';
     
   square.style.left = Math.random() * window.innerWidth + 'px';
-    
+     
   const duration = Math.random() * 3 + 2;
   square.style.animationDuration = duration + 's';
     
@@ -219,7 +306,7 @@ function createSquare() {
   }, duration * 1000 + 500);
 }
 
-setInterval(createSquare, 50);
+particles = setInterval(createSquare, 100);
 
 /*function playEffect(duration = 5000) {
   const interval = setInterval(createSquare, 50);
@@ -261,6 +348,10 @@ function startTimer() {
 function loose(){
   document.getElementById("loose").style.display = "block";
   document.getElementById("game").style.display = "none";
-  
   document.getElementById("result").textContent = ": تعداد جواب های درست " + corrects + " ✅";
+  if(corrects > record){
+    record = corrects;
+    document.getElementById("record").textContent = "بهترین رکورد امروزت: " + record;
+    send_score(corrects, 6025961065);
+  }
 }
